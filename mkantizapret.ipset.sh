@@ -1,4 +1,18 @@
-rutracker.org
+#!/bin/sh
+
+domains=/tmp/domains.$$
+dnsmasqcfg=/tmp/antizapret.dnsmasq
+dnsmasqtmp=$dnsmasqcfg.$$
+iplist=/tmp/iplist.$$
+ipsetip=tor-ip
+
+escape(){
+    rm -f $domains $iplist $dnsmasqtmp
+}
+trap escape EXIT
+touch $dnsmasqcfg
+
+echo "rutracker.org
 rutor.org
 rutor.info
 rutor.is
@@ -110,4 +124,34 @@ venus.web.telegram.org
 flora.web.telegram.org
 vesta.web.telegram.org
 pluto.web.telegram.org
-aurora.web.telegram.org
+aurora.web.telegram.org" >$domains || exit
+#[ "$(stat -c%s $domains)" -gt 500000 ] || exit
+
+modprobe ip_set_hash_ip
+modprobe xt_set
+ipset create tor iphash 2>/dev/null
+ipset create $ipsetip iphash 2>/dev/null
+ipset create $ipsetip-tmp iphash 2>/dev/null
+
+# Список IP адресов
+echo "flush $ipsetip-tmp" >$iplist
+cat $domains | grep "^\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}$" | while read domain
+do
+    echo "add $ipsetip-tmp $domain"
+done >>$iplist
+echo "swap $ipsetip-tmp $ipsetip
+flush $ipsetip-tmp" >>$iplist
+cat $iplist | ipset restore
+rm -f $iplist
+
+# Список доменов для dnsmasq
+echo "ipset=/onion/tor" >$dnsmasqtmp
+cat $domains  | grep -v -e "^\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}$" | grep -e "^[a-z0-9\.-]\+$" | sed 's/^\*\.//' | while read domain
+do
+    echo "ipset=/$domain/tor"
+done >>$dnsmasqcfg.$$
+echo "ipset=/check.torproject.org/tor" >>$dnsmasqtmp
+#[ "$(stat -c%s $dnsmasqtmp)" -gt 500000 ] || exit
+mv -f $dnsmasqtmp $dnsmasqcfg
+restart_dhcpd
+restart_firewall
