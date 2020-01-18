@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat /dev/null > /tmp/hosts/block
+cat /dev/null > /opt/etc/hosts
 echo List Generation
 
 URLS="https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt \
