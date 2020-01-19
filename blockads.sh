@@ -1,5 +1,6 @@
 #!/bin/sh
 
+logger "download blockads list"
 cat /dev/null > /opt/etc/hosts
 echo List Generation
 
@@ -119,4 +120,4 @@ sed -i '/mÿethèrwallét.com/d' hosts
 echo Restart dnsmasq
 killall -q dnsmasq
 /usr/sbin/dnsmasq
-
+logger "update blockads list was finished"
