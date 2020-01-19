@@ -1,6 +1,6 @@
 #!/bin/sh
 
-logger ">>>tor script>>> start update of antizapret"
+logger "start update of antizapret"
 domains=/tmp/domains.$$
 dnsmasqcfg=/opt/etc/antizapret.dnsmasq
 dnsmasqtmp=$dnsmasqcfg.$$
@@ -156,4 +156,4 @@ echo "ipset=/check.torproject.org/tor" >>$dnsmasqtmp
 mv -f $dnsmasqtmp $dnsmasqcfg
 restart_dhcpd
 restart_firewall
-logger ">>>tor script>>> update antizapret was finished"
+logger "update antizapret was finished"
