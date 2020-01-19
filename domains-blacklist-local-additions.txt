@@ -1,10 +1,32 @@
 # Local set of patterns to block
 
+*.2mdn.*
+*.analytics.*
+*.doubleclick.*
+*.google-analytics.*
+*.googleadservices.*
+*.googlesyndication.*
+*analytics*
 ad.*
+adbroker.*
+ade.*
+ads*.*
 ads.*
+adserver.*
+adservice.*
+analytics.*
 banner.*
 banners.*
+clck.*
 creatives.*
+doubleclick.*
+google-analytics.*
+googleads.*
+googleadservices.*
+googlesyndication.*
+informer.*
+metrica.*
+metrika.*
 oas.*
 oascentral.*
 stats.*
