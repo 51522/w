@@ -2,7 +2,7 @@
 
 logger ">>>tor script>>> start update of antizapret"
 domains=/tmp/domains.$$
-dnsmasqcfg=/tmp/antizapret.dnsmasq
+dnsmasqcfg=/opt/etc/antizapret.dnsmasq
 dnsmasqtmp=$dnsmasqcfg.$$
 iplist=/tmp/iplist.$$
 ipsetip=tor-ip
