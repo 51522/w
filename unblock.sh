@@ -1,7 +1,8 @@
 #!/bin/sh
 
+logger ">>>tor script>>> start update of unblock"
 domains=/tmp/domains.$$
-dnsmasqcfg=/tmp/unblock.dnsmasq
+dnsmasqcfg=/opt/etc/unblock.dnsmasq
 dnsmasqtmp=$dnsmasqcfg.$$
 
 escape(){
@@ -155,3 +156,4 @@ echo "server=/onion/127.0.0.1#9053" >> $dnsmasqtmp
 mv -f $dnsmasqtmp $dnsmasqcfg
 restart_dhcpd
 restart_firewall
+logger ">>>tor script>>> update unblock was finished"
