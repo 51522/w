@@ -1,10 +1,10 @@
-server_names = ['cloudflare', 'scaleway-ams', 'google']
+server_names = ['opennic-luggs', 'opennic-luggs2', 'opennic-R4SAS']
 listen_addresses = ['127.0.0.1:65053']
 max_clients = 250
 ipv4_servers = true
 ipv6_servers = false
 dnscrypt_servers = true
-doh_servers = true
+doh_servers = false
 require_dnssec = true
 require_nolog = true
 require_nofilter = true
@@ -46,7 +46,7 @@ cache_neg_max_ttl = 600
   
 [blacklist]
 
-  blacklist_file = '/opt/etc/blacklist.txt'  
+  blacklist_file = '/opt/etc/dnscrypt/blacklist.txt'  
 
 [sources]
 
@@ -70,7 +70,5 @@ cache_neg_max_ttl = 600
 [anonymized_dns]
 
 routes = [
-  { server_name='cloudflare', via=['anon-scaleway-ams', 'anon-dnscrypt.one'] },
-  { server_name='scaleway-ams', via=['anon-inconnu', 'anon-kama'] },
-  { server_name='google', via=['anon-scaleway-ams', 'anon-kama'] }
+  { server_name='*', via=['anon-cs-ams', 'anon-kama'] }
 ]
