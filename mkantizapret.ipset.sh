@@ -126,7 +126,6 @@ flora.web.telegram.org
 vesta.web.telegram.org
 pluto.web.telegram.org
 aurora.web.telegram.org" >$domains || exit
-#[ "$(stat -c%s $domains)" -gt 500000 ] || exit
 
 modprobe ip_set_hash_ip
 modprobe xt_set
@@ -152,7 +151,7 @@ do
     echo "ipset=/$domain/tor"
 done >>$dnsmasqcfg.$$
 echo "ipset=/check.torproject.org/tor" >>$dnsmasqtmp
-#[ "$(stat -c%s $dnsmasqtmp)" -gt 500000 ] || exit
+echo "server=/onion/127.0.0.1#9053" >>$dnsmasqtmp
 mv -f $dnsmasqtmp $dnsmasqcfg
 restart_dhcpd
 restart_firewall
