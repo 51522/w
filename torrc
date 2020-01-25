@@ -2,12 +2,18 @@ VirtualAddrNetworkIPv4 172.16.0.0/12
 AutomapHostsOnResolve 1
 SocksPort 127.0.0.1:9050
 #SocksPort 10.0.0.1:9050
+#TransPort 10.0.0.1:9040
 TransPort 0.0.0.0:9040
 DNSPort 127.0.0.1:9053
+#DNSPort 10.0.0.1:9053
 User nobody
 Log notice syslog
+#SOCKSPolicyaccept 127.0.0.1
+#SOCKSPolicyaccept 10.0.0.0/16
+#SOCKSPolicy accept6 FC00::/7
+SOCKSPolicy reject *
 ExitRelay 0
 ExitPolicy reject *:*
 ExitPolicy reject6 *:*
-ExcludeExitNodes {RU}, {UA}, {BY}, {KZ}, {MD}, {AZ}, {AM}, {GE}, {LY}, {LT}, {TM}, {UZ}, {EE}
+ExcludeExitNodes {RU},{UA},{BY},{KZ},{MD},{AZ},{AM},{GE},{LY},{LT},{TM},{UZ},{EE},{??}
 StrictNodes 1
