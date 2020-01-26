@@ -14,7 +14,7 @@ listen_addresses:
 dns_transport_list:
   - GETDNS_TRANSPORT_TLS
 upstream_recursive_servers:
-  - address_data: 1.1.1.1
-    tls_auth_name: "cloudflare-dns.com"
-  - address_data: 1.0.0.1
-    tls_auth_name: "cloudflare-dns.com"
+  - address_data: 176.103.130.130
+    tls_auth_name: "dns.adguard.com"
+  - address_data: 176.103.130.131
+    tls_auth_name: "dns.adguard.com"
