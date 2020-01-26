@@ -13,7 +13,8 @@ escape(){
 trap escape EXIT
 touch $dnsmasqcfg
 
-echo "rutracker.org
+echo "check.torproject.org
+rutracker.org
 rutor.org
 rutor.info
 rutor.is
@@ -150,8 +151,6 @@ cat $domains  | grep -v -e "^\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}$" |
 do
     echo "ipset=/$domain/tor"
 done >>$dnsmasqcfg.$$
-echo "ipset=/check.torproject.org/tor" >>$dnsmasqtmp
-echo "server=/onion/127.0.0.1#9053" >>$dnsmasqtmp
 mv -f $dnsmasqtmp $dnsmasqcfg
 restart_dhcpd
 restart_firewall
