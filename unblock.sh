@@ -1,6 +1,7 @@
 #!/bin/sh
 
 logger "start update of unblock"
+
 domains=/tmp/domains.$$
 dnsmasqcfg=/tmp/unblock.dnsmasq
 dnsmasqtmp=$dnsmasqcfg.$$
@@ -9,6 +10,8 @@ escape(){
     rm -f $domains $dnsmasqtmp
 }
 trap escape EXIT
+touch $dnsmasqcfg
+
 echo "# Tor check
 check.torproject.org
 
@@ -133,15 +136,7 @@ venus.web.telegram.org
 flora.web.telegram.org
 vesta.web.telegram.org
 pluto.web.telegram.org
-aurora.web.telegram.org
-149.154.160.0/20
-91.108.4.0/22
-91.108.8.0/22
-91.108.12.0/22
-91.108.16.0/22
-91.108.56.0/22
-109.239.140.0/24
-67.198.55.0/24" >> $domains || exit
+aurora.web.telegram.org" >> $domains || exit
 
 modprobe ip_set
 modprobe ip_set_hash_ip
@@ -152,40 +147,61 @@ modprobe xt_set
 ipset create unblock hash:net
 ipset flush unblock
 
-while read line || [ -n "$line" ]; do
-  [ -z "$line" ] && continue
-  [ "${line:0:1}" = "#" ] && continue
-  cidr=$(echo $line | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}')
-
-  if [ ! -z "$cidr" ]; then
-    ipset -exist add unblock $cidr
-    continue
+i_wait_counter=0;
+until [ $i_wait_counter -ge 5 ]
+do
+  i_wait_counter=$(( $i_wait_counter + 1 ))
+  if ( ping -c1 -W 5 1.1.1.1 >/dev/null ); then
+    #to break from cycle when got internet connection
+    i_wait_counter=6
+  else
+    logger "waiting of internet connection ($i_wait_counter try of 5)..."
+    if [ $i_wait_counter -lt 5 ]; then
+      sleep 10
+    fi
   fi
-    
-  range=$(echo $line | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+done
 
-  if [ ! -z "$range" ]; then
-    ipset -exist add unblock $range
-    continue
-  fi
-    
-  addr=$(echo $line | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+if [ $i_wait_counter -eq 6 ]; then
+# internet is on
 
-  if [ ! -z "$addr" ]; then
-    ipset -exist add unblock $addr
-    continue
-  fi
+  while read domain || [ -n "$domain" ]; do
+    [ -z "$domain" ] && continue
+    [ "${domain:0:1}" = "#" ] && continue
+    cidr=$(echo $domain | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}')
+
+    if [ ! -z "$cidr" ]; then
+      ipset -exist add unblock $cidr
+      continue
+    fi
     
-  nslookup $line 1.1.1.1 | grep -v '1.1.1.1' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{system("ipset -exist add unblock "$1)}'
+    range=$(echo $domain | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+
+    if [ ! -z "$range" ]; then
+      ipset -exist add unblock $range
+      continue
+    fi
+    
+    addr=$(echo $domain | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+
+    if [ ! -z "$addr" ]; then
+      ipset -exist add unblock $addr
+      continue
+    fi
+    
+    nslookup $domain 1.1.1.1 | grep -v '1.1.1.1' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{system("ipset -exist add unblock "$1)}'
+  done < $domains || exit
+else
+  logger "no internet connection"
+fi
+
+echo "ipset=/onion/unblock" > $dnsmasqtmp
+while read domain || [ -n "$domain" ]; do
+  [ -z "$domain" ] && continue
+  [ "${domain:0:1}" = "#" ] && continue
+  echo $domain | grep -Eq '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' && continue
+  echo "ipset=/$domain/unblock" >> $dnsmasqtmp
 done < $domains || exit
-
-while read line || [ -n "$line" ]; do
-  [ -z "$line" ] && continue
-  [ "${line:0:1}" = "#" ] && continue
-  echo $line | grep -Eq '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' && continue
-  echo "ipset=/$line/unblock" >> $dnsmasqtmp
-done < $domains || exit
-echo "ipset=/onion/unblock" >> $dnsmasqtmp
 mv -f $dnsmasqtmp $dnsmasqcfg
 restart_dhcpd
 restart_firewall
