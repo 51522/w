@@ -189,7 +189,7 @@ if [ $i_wait_counter -eq 6 ]; then
       continue
     fi
     
-    nslookup $domain 1.1.1.1 | grep -v '1.1.1.1' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{system("ipset -exist add unblock "$1)}'
+    nslookup $domain 127.0.0.1:65053 | grep -v '127.0.0.1' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{system("ipset -exist add unblock "$1)}'
   done < $domains || exit
 else
   logger "no internet connection"
