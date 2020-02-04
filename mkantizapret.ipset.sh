@@ -14,15 +14,19 @@ trap escape EXIT
 touch $dnsmasqcfg
 
 echo "check.torproject.org
+protonmail.com
+mail.protonmail.com
 rutracker.org
 rutor.org
 rutor.info
 rutor.is
 mega-tor.org
 kinozal.tv
+lostfilm.tv
 nnmclub.to
 nnm-club.me
 nnm-club.ws
+novafilm.tv
 tfile.me
 tfile-home.org
 tfile1.cc
@@ -37,6 +41,7 @@ rustorka.net
 uniongang.tv
 fast-torrent.ru
 hdrezka.download
+waffles.ch
 720-hd-online.com
 1001kniga.download
 1080hd-film.online
@@ -120,13 +125,7 @@ telegram.me
 t.me
 telegra.ph
 web.telegram.org
-desktop.telegram.org
-updates.tdesktop.com
-venus.web.telegram.org
-flora.web.telegram.org
-vesta.web.telegram.org
-pluto.web.telegram.org
-aurora.web.telegram.org" >$domains || exit
+desktop.telegram.org" >$domains || exit
 
 modprobe ip_set_hash_ip
 modprobe xt_set
