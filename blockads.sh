@@ -1,10 +1,11 @@
 #!/bin/sh
 
 logger "download blockads list"
-cat /dev/null > /opt/etc/hosts
+cat /dev/null > /tmp/hosts
 echo List Generation
 
 URLS="https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt \
+https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardDNS.txt \
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts \
 https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/hosts \
 http://adaway.org/hosts.txt \
@@ -14,11 +15,11 @@ http://winhelp2002.mvps.org/hosts.txt \
 https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext \
 https://www.malwaredomainlist.com/hostslist/hosts.txt"
 
-wget -q -O- $URLS | grep -v "^#" | cut -d "#" -f 1 | sed 's/127\.0\.0\.1/0\.0\.0\.0/' | grep "^0.0.0.0" | sed 's/  */ /g' | sed 's/\t/ /g' |sed 's/\r//' | cut -d " " -f 1,2 | tr A-Z a-z | sort | uniq > /opt/etc/hosts
+wget -q -O- $URLS | grep -v "^#" | cut -d "#" -f 1 | sed 's/127\.0\.0\.1/0\.0\.0\.0/' | grep "^0.0.0.0" | sed 's/  */ /g' | sed 's/\t/ /g' |sed 's/\r//' | cut -d " " -f 1,2 | tr A-Z a-z | sort | uniq > /tmp/hosts
 
 echo Clear List
 
-cd /opt/etc
+cd /tmp
 sed -i '/localhost/d' hosts
 sed -i '/localhost.localdomain/d' hosts
 sed -i '/ad.admitad.com/d' hosts
@@ -116,6 +117,10 @@ sed -i '/ɢoogle.com/d' hosts
 sed -i '/secret.ɢoogle.com/d' hosts
 sed -i '/myètherwället.com/d' hosts
 sed -i '/mÿethèrwallét.com/d' hosts
+sed -i '/банрек.рус/d' hosts
+sed -i '/укроп-петрушка-огурцы.рф/d' hosts
+sed -i '/хельга.рф/d' hosts
+sed -i '/эхх.рф/d' hosts
 
 echo Restart dnsmasq
 killall -q dnsmasq
