@@ -4,7 +4,7 @@
 0.0.0.0 af.opera.com
 0.0.0.0 speeddials.opera.com
 0.0.0.0 merchandise.opera-api.com
-0.0.0.0 autoupdate.geo.opera.com
+#0.0.0.0 autoupdate.geo.opera.com
 0.0.0.0 thumbnails.opera.com
 # Mail.ru (mail.ru)
 0.0.0.0 mradx.net
