@@ -4,7 +4,8 @@ logger "download blockads list"
 cat /dev/null > /tmp/hosts
 echo List Generation
 
-URLS="https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt \
+URLS="https://raw.githubusercontent.com/51522/w/master/privacy-hosts \
+https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt \
 https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardDNS.txt \
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts \
 https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/hosts \
