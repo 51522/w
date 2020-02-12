@@ -161,7 +161,6 @@
 0.0.0.0 stat.xiaomi.com
 #0.0.0.0 update.intl.miui.com
 # Opera
-0.0.0.0 sitecheck.opera.com
 0.0.0.0 api.recsys.opera.com
 0.0.0.0 ofa-sub.osp.opera.software
 0.0.0.0 sitecheck.opera.com
@@ -179,6 +178,7 @@
 0.0.0.0 fmdata.imgsmail.ru
 0.0.0.0 cspreport.mail.ru
 # Google (google.com/analytics)
+0.0.0.0 mtalk.google.com
 0.0.0.0 googletagmanager.com
 0.0.0.0 googletagservices.com
 0.0.0.0 googlesyndication.com
