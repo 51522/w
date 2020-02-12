@@ -113,6 +113,8 @@
 0.0.0.0 global.preview.app.market.pt.xiaomi.com
 0.0.0.0 global.search.xiaomi.net
 0.0.0.0 globalapi.ad.xiaomi.com
+0.0.0.0 graph.facebook.com
+0.0.0.0.graph.instagram.com
 0.0.0.0 gvod.aiseejapp.atianqi.com
 0.0.0.0 hd02.lg.xiaomi.com
 0.0.0.0 hd.xiaomi.com
@@ -185,6 +187,7 @@
 0.0.0.0 resolver.msg.xiaomi.net
 0.0.0.0 ruac.account.xiaomi.com
 0.0.0.0 sandbox.xmpush.xiaomi.com
+0.0.0.0 sa.api.intl.miui.com
 0.0.0.0 sdkconfig.ad.intl.xiaomi.com
 0.0.0.0 sdkconfig.ad.xiaomi.com
 0.0.0.0 sec-cdn.static.xiaomi.net
