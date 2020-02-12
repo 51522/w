@@ -69,8 +69,8 @@
 0.0.0.0 geofence.sys.miui.com
 0.0.0.0 global.search.xiaomi.net
 0.0.0.0 globalapi.ad.xiaomi.com
-0.0.0.0 graph.facebook.com
-0.0.0.0 graph.instagram.com
+#0.0.0.0 graph.facebook.com
+#0.0.0.0 graph.instagram.com
 0.0.0.0 gvod.aiseejapp.atianqi.com
 0.0.0.0 hd.xiaomi.com
 0.0.0.0 hd02.lg.xiaomi.com
