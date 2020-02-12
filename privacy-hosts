@@ -210,7 +210,7 @@
 0.0.0.0 statusapi.micloud.xiaomi.net
 0.0.0.0 storeconfig.mistat.intl.xiaomi.com
 0.0.0.0 t1.g.mi.com
-0.0.0.0 t2.market.xiaomi.com
+#0.0.0.0 t2.market.xiaomi.com
 0.0.0.0 tc.hd.xiaomi.com
 0.0.0.0 tel.fe01.hh.xiaomi.com
 0.0.0.0 test.ad.xiaomi.com
