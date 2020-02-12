@@ -51,7 +51,7 @@
 0.0.0.0 ctc.fe02.c3.xiaomi.com
 0.0.0.0 d.xiaomi.com
 0.0.0.0 data.game.xiaomi.com
-0.0.0.0 data.mistat.intl.xiaomi.com
+#0.0.0.0 data.mistat.intl.xiaomi.com
 0.0.0.0 data.mistat.xiaomi.com
 0.0.0.0 data.sec.miui.com
 0.0.0.0 de.pandora.xiaomi.com
@@ -69,8 +69,8 @@
 0.0.0.0 geofence.sys.miui.com
 0.0.0.0 global.search.xiaomi.net
 0.0.0.0 globalapi.ad.xiaomi.com
-#0.0.0.0 graph.facebook.com
-#0.0.0.0 graph.instagram.com
+0.0.0.0 graph.facebook.com
+0.0.0.0 graph.instagram.com
 0.0.0.0 gvod.aiseejapp.atianqi.com
 0.0.0.0 hd.xiaomi.com
 0.0.0.0 hd02.lg.xiaomi.com
