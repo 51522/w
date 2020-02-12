@@ -144,7 +144,7 @@
 0.0.0.0 trial.api.huangye.miui.com
 0.0.0.0 tv.app.migc.xiaomi.com
 0.0.0.0 update.avlyun.sec.miui.com
-#0.0.0.0 update.miui.com
+0.0.0.0 update.miui.com
 0.0.0.0 upgrade.mishop.pandora.xiaomi.com
 0.0.0.0 userid.xiaomi.com
 0.0.0.0 voip.game.xiaomi.com
