@@ -219,7 +219,7 @@
 0.0.0.0 test.new.api.ad.xiaomi.com
 0.0.0.0 test.xiaomi.com
 0.0.0.0 test.zeus.ad.xiaomi.com
-0.0.0.0 thm.market.xiaomi.com
+#0.0.0.0 thm.market.xiaomi.com
 0.0.0.0 tracking.intl.miui.com
 0.0.0.0 tracking.miui.com
 0.0.0.0 trial.api.huangye.miui.com
