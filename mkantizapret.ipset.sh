@@ -14,6 +14,14 @@ trap escape EXIT
 touch $dnsmasqcfg
 
 echo "check.torproject.org
+w1.tutanota.de
+w2.tutanota.de
+w3.tutanota.de
+w4.tutanota.de
+tutanota.de
+tutanota.com
+mail.tutanota.com
+mail.tutanota.de
 protonmail.com
 mail.protonmail.com
 rutracker.org
