@@ -185,6 +185,7 @@
 0.0.0.0 appsflyer.com
 # Flurry
 0.0.0.0 flurry.com
+0.0.0.0 www.flurry.com
 # Facebook
 0.0.0.0 facebook.com
 0.0.0.0 com.facebook.ads
