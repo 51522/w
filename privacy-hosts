@@ -232,6 +232,12 @@
 0.0.0.0 banners-slb.mobile.yandex.net
 0.0.0.0 startup.mobile.yandex.net
 0.0.0.0 mc.yandex.ru
+# Umeng
+0.0.0.0 alog.umeng.com
+0.0.0.0 ar.umeng.com
+0.0.0.0 oc.umeng.com
+0.0.0.0 uop.umeng.com
+0.0.0.0 umeng.com
 # Google (google.com/analytics)
 0.0.0.0 mediation.ads.gms.android.google.com
 0.0.0.0 com.google.android.gms.ads.mediation
