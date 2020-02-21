@@ -246,7 +246,6 @@ while read domain || [ -n "$domain" ]; do
   [ "${domain:0:1}" = "#" ] && continue
   echo $domain | grep -Eq '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' && continue
   echo "ipset=/$domain/unblock" >> $dnsmasqtmp
-  echo "server=/$domain/127.0.0.1#65053" >> $dnsmasqtmp
 done < $domains || exit
 mv -f $dnsmasqtmp $dnsmasqcfg
 echo "ipset=/onion/unblock" >> $dnsmasqcfg
