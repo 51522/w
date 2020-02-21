@@ -12,8 +12,41 @@ escape(){
 trap escape EXIT
 touch $dnsmasqcfg
 
+cat /dev/null > $domains
+
 echo "# Tor check
 check.torproject.org
+
+# Tutanota
+tutanota.ru
+w1.tutanota.de
+w2.tutanota.de
+w3.tutanota.de
+w4.tutanota.de
+tutanota.de
+tutanota.com
+mail.tutanota.com
+mail.tutanota.de
+2a02:790:1:d::100:164
+81.3.6.160
+81.3.6.162
+81.3.6.163
+81.3.6.164
+81.3.6.165
+134.249.148.16
+188.40.109.72
+
+# Protonmail
+api.protonmail.ch
+protonmail.com
+www.protonmail.com
+mail.protonmail.com
+185.70.41.130
+18.195.178.81
+185.70.40.189
+185.70.40.189
+185.70.40.182
+185.70.40.182
 
 # Торрент-трекеры
 rutracker.org
@@ -22,6 +55,8 @@ rutor.info
 rutor.is
 mega-tor.org
 kinozal.tv
+lostfilm.tv
+novafilm.tv
 nnmclub.to
 nnm-club.me
 nnm-club.ws
@@ -39,6 +74,7 @@ rustorka.net
 uniongang.tv
 fast-torrent.ru
 hdrezka.download
+waffles.ch
 
 # Каталоги медиаконтента для программ
 720-hd-online.com
@@ -136,15 +172,23 @@ venus.web.telegram.org
 flora.web.telegram.org
 vesta.web.telegram.org
 pluto.web.telegram.org
-aurora.web.telegram.org" >> $domains || exit
+aurora.web.telegram.org
+149.154.160.0/20
+91.108.4.0/22
+91.108.8.0/22
+91.108.12.0/22
+91.108.16.0/22
+91.108.56.0/22
+91.223.123.154
+109.239.140.0/24
+67.198.55.0/24
+2001:67c:4e8:1033:6:100:0:a
+2001:67c:4e8:1033:5:100:0:a
+2001:67c:4e8:1033:3:100:0:a
+2001:67c:4e8:1033:2:100:0:a
+2001:67c:4e8:1029:1:0:439:131
+2001:67c:4e8:1029::439:31" >> $domains || exit
 
-modprobe ip_set
-modprobe ip_set_hash_ip
-modprobe ip_set_hash_net
-modprobe ip_set_bitmap_ip
-modprobe ip_set_list_set
-modprobe xt_set
-ipset create unblock hash:net
 ipset flush unblock
 
 i_wait_counter=0;
@@ -195,11 +239,14 @@ else
   logger "no internet connection"
 fi
 
+cat /dev/null > $dnsmasqcfg
+
 while read domain || [ -n "$domain" ]; do
   [ -z "$domain" ] && continue
   [ "${domain:0:1}" = "#" ] && continue
   echo $domain | grep -Eq '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' && continue
   echo "ipset=/$domain/unblock" >> $dnsmasqtmp
+  echo "server=/$line/127.0.0.1#65053" >> $dnsmasqtmp
 done < $domains || exit
 mv -f $dnsmasqtmp $dnsmasqcfg
 echo "ipset=/onion/unblock" >> $dnsmasqcfg
