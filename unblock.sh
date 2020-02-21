@@ -195,7 +195,6 @@ else
   logger "no internet connection"
 fi
 
-echo "ipset=/onion/unblock" > $dnsmasqtmp
 while read domain || [ -n "$domain" ]; do
   [ -z "$domain" ] && continue
   [ "${domain:0:1}" = "#" ] && continue
@@ -203,6 +202,8 @@ while read domain || [ -n "$domain" ]; do
   echo "ipset=/$domain/unblock" >> $dnsmasqtmp
 done < $domains || exit
 mv -f $dnsmasqtmp $dnsmasqcfg
+echo "ipset=/onion/unblock" >> $dnsmasqcfg
+echo "server=/onion/127.0.0.1#9053" >> $dnsmasqcfg
 restart_dhcpd
 restart_firewall
 logger "update of unblock was finished"
