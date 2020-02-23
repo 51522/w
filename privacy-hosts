@@ -217,6 +217,12 @@
 0.0.0.0 stat.xiaomi.com
 #0.0.0.0 update.intl.miui.com
 # Opera
+0.0.0.0 66.102.0.0/20
+0.0.0.0 82.145.216.0/22
+0.0.0.0 91.203.96.0/22
+0.0.0.0 104.16.0.0/12
+0.0.0.0 185.26.182.105
+0.0.0.0 2001:4c28::/32
 0.0.0.0 api.recsys.opera.com
 0.0.0.0 ofa-sub.osp.opera.software
 0.0.0.0 sitecheck.opera.com
