@@ -396,7 +396,7 @@
 0.0.0.0 app.miui.com
 0.0.0.0 o.data.mistat.xiaomi.com
 0.0.0.0 find.api.micloud.xiaomi.net
-0.0.0.0 weatherapi.market.xiaomi.com
+#0.0.0.0 weatherapi.market.xiaomi.com
 0.0.0.0 tracker-api.my.com
 0.0.0.0 t.appsflyer.com
 0.0.0.0 proxy.sec.miui.com
