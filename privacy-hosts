@@ -241,6 +241,7 @@
 127.0.0.1 portal.mail.ru
 127.0.0.1 fmdata.imgsmail.ru
 127.0.0.1 cspreport.mail.ru
+127.0.0.1 top-fwz1.mail.ru
 # Onesignal
 127.0.0.1 onesignal.com
 # Appsflyer
@@ -251,6 +252,7 @@
 # Facebook
 127.0.0.1 facebook.com
 127.0.0.1 com.facebook.ads
+127.0.0.1 fbcdn2.com
 # IntegralAds
 127.0.0.1 com.integralads.avid.library
 127.0.0.1 adsafeprotected.com
@@ -295,6 +297,7 @@
 127.0.0.1 startup.mobile.yandex.net
 127.0.0.1 mc.yandex.ru
 127.0.0.1 an.yandex.ru
+127.0.0.1 matchid.adfox.yandex.ru
 # Umeng
 127.0.0.1 alog.umeng.com
 127.0.0.1 ar.umeng.com
@@ -569,6 +572,16 @@
 127.0.0.1 data.mistat.rus.xiaomi.com
 127.0.0.1 etl-xlmc-ssl.sandai.net
 127.0.0.1 beacons.gcp.gvt2.com
+127.0.0.1 beacons1.gcp.gvt2.com
+127.0.0.1 beacons2.gcp.gvt2.com
+127.0.0.1 beacons3.gcp.gvt2.com
+127.0.0.1 beacons4.gcp.gvt2.com
+127.0.0.1 beacons5.gcp.gvt2.com
+127.0.0.1 beacons.gvt3.com
+127.0.0.1 beacons1.gvt3.com
+127.0.0.1 beacons2.gvt2.com
+127.0.0.1 beacons3.gvt2.com
+127.0.0.1 beacons4.gvt2.com
 127.0.0.1 beacons5.gvt3.com
 127.0.0.1 ads.mopub.com
 127.0.0.1 api.tw06.xlmc.sec.miui.com
@@ -581,3 +594,13 @@
 127.0.0.1 st.top100.ru
 127.0.0.1 metrika-informer.com
 127.0.0.1 1k3static.com
+127.0.0.1 theonecdn.com
+127.0.0.1 sonar.semantiqo.com
+127.0.0.1 wcm-ru.frontend.weborama.fr
+127.0.0.1 ww1.gmodlive.com
+127.0.0.1 tt.onthe.io
+127.0.0.1 bael5.variti.net
+127.0.0.1 wam.solution.weborama.fr
+127.0.0.1 aimfar.solution.weborama.fr
+127.0.0.1 cstatic.weborama.fr
+127.0.0.1 cr.frontend.weborama.fr
