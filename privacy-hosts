@@ -233,6 +233,7 @@
 #127.0.0.1 autoupdate.geo.opera.com
 127.0.0.1 thumbnails.opera.com
 # Mail.ru (mail.ru)
+127.0.0.1 ad.mail.ru
 127.0.0.1 mradx.net
 127.0.0.1 r.mradx.net
 127.0.0.1 r.mail.ru
@@ -293,6 +294,7 @@
 127.0.0.1 banners-slb.mobile.yandex.net
 127.0.0.1 startup.mobile.yandex.net
 127.0.0.1 mc.yandex.ru
+127.0.0.1 an.yandex.ru
 # Umeng
 127.0.0.1 alog.umeng.com
 127.0.0.1 ar.umeng.com
@@ -553,3 +555,29 @@
 127.0.0.1 startup-slb.mobile.yandex.ru
 127.0.0.1 analytics-slb.mobile.yandex.net
 127.0.0.1 certificate.mobile.yandex.net
+###
+127.0.0.1 protovid.com
+127.0.0.1 z.cdn.braun634.com
+127.0.0.1 inv-nets.admixer.net
+127.0.0.1 wzrkt.com
+127.0.0.1 i.mxplayer.j2inter.com
+127.0.0.1 ms.applovin.com
+127.0.0.1 rt.applovin.com
+127.0.0.1 d.applovin.com
+127.0.0.1 mc.applovin.com
+127.0.0.1 analytics.ff.avast.com
+127.0.0.1 data.mistat.rus.xiaomi.com
+127.0.0.1 etl-xlmc-ssl.sandai.net
+127.0.0.1 beacons.gcp.gvt2.com
+127.0.0.1 beacons5.gvt3.com
+127.0.0.1 ads.mopub.com
+127.0.0.1 api.tw06.xlmc.sec.miui.com
+127.0.0.1 tracking.rus.miui.com
+127.0.0.1 config.uca.cloud.unity3d.com
+127.0.0.1 cdp.cloud.unity3d.com
+127.0.0.1 config.unityads.unity3d.com
+127.0.0.1 static.criteo.net
+127.0.0.1 track.tiara.daum.net
+127.0.0.1 st.top100.ru
+127.0.0.1 metrika-informer.com
+127.0.0.1 1k3static.com
