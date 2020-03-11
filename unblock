@@ -1,11 +1,11 @@
 #!/bin/sh /etc/rc.common
 
-START=50
-
 logger "start update of unblock"
 
+START=90
+
 CONF="/etc/unblock.dnsmasq"
-DOMAINS=/tmp/domains.$$
+domains=/tmp/domains.$$
 
 escape(){
     rm -f $domains
@@ -197,6 +197,7 @@ start(){
 
 ipset_add(){
 	while read domain || [ -n "$domain" ]; do
+	
 		[ -z "$domain" ] && continue
 		[ "${domain:0:1}" = "#" ] && continue
 
@@ -222,18 +223,23 @@ ipset_add(){
 		fi
   
 		nslookup $domain 127.0.0.1:5453 | grep -v '127.0.0.1' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | sed '/127.0.0.1/d' | awk '{system("ipset -exist add unblock "$1)}'
-	done < $DOMAINS || exit
+		
+	done < $domains || exit
 }
 
 reload(){
 	cat /dev/null > $CONF
 
 	while read domain || [ -n "$domain" ]; do
+	
 		[ -z "$domain" ] && continue
 		[ "${domain:0:1}" = "#" ] && continue
+		
 		echo $domain | grep -Eq '([0-9]{1,3}\.){3}[0-9]{1,3}' && continue
+		
 		echo "ipset=/$domain/unblock" >> $CONF
-	done < $DOMAINS || exit
+		
+	done < $domains || exit
 }
 
 restart(){
@@ -241,6 +247,5 @@ restart(){
 	reload
 	/etc/init.d/dnsmasq restart
 	ipset_add &
+	logger "update of unblock was finished"
 }
-
-logger "update of unblock was finished"
