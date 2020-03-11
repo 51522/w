@@ -247,5 +247,5 @@ restart(){
 	reload
 	/etc/init.d/dnsmasq restart
 	ipset_add &
-	logger "update of unblock was finished"
 }
+logger "update of unblock was finished"
