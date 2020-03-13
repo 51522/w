@@ -1,0 +1,10 @@
+Log notice syslog
+DataDirectory /var/lib/tor
+User tor
+AutomapHostsOnResolve 1
+TransPort 0.0.0.0:9040
+StrictNodes 1
+ExcludeExitNodes {am}, {az}, {by}, {ee}, {ge}, {kg}, {kz}, {lt}, {ly}, {md}, {ru}, {tj}, {tm}, {ua}, {uz}
+ExitRelay 0
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
