@@ -18,7 +18,6 @@ echo "# Tor check
 check.torproject.org
 
 # Tutanota
-tutanota.ru
 w1.tutanota.de
 w2.tutanota.de
 w3.tutanota.de
@@ -181,13 +180,7 @@ aurora.web.telegram.org
 91.108.56.0/22
 91.223.123.154
 109.239.140.0/24
-67.198.55.0/24
-2001:67c:4e8:1033:6:100:0:a
-2001:67c:4e8:1033:5:100:0:a
-2001:67c:4e8:1033:3:100:0:a
-2001:67c:4e8:1033:2:100:0:a
-2001:67c:4e8:1029:1:0:439:131
-2001:67c:4e8:1029::439:31" >> $domains || exit
+67.198.55.0/24" >> $domains || exit
 
 start(){
 	ipset create unblock hash:net
@@ -222,7 +215,7 @@ ipset_add(){
 			continue
 		fi
   
-		nslookup $domain 127.0.0.1:5453 | grep -v '127.0.0.1' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | sed '/127.0.0.1/d' | awk '{system("ipset -exist add unblock "$1)}'
+		nslookup $domain 127.0.0.1:5353 | grep -v '127.0.0.1' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | sed '/127.0.0.1/d' | awk '{system("ipset -exist add unblock "$1)}'
 		
 	done < $domains || exit
 }
